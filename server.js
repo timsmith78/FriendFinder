@@ -11,7 +11,7 @@ app.use(bodyParser.json())
 
 // Establish routes
 require('./app/routing/apiRoutes')(app)
-//require('./app/routing/htmlRoutes')(app)
+require('./app/routing/htmlRoutes')(app)
 
 // Listen on specified port for incoming requests
 app.listen(PORT, () => {

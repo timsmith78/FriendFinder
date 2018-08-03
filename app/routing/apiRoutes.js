@@ -4,7 +4,6 @@ const fs = require('fs')
 const friendDBpath = './app/data/friends.js'
 module.exports = (app) => {
     app.get('/api/friends', (req, res) => {
-         console.log("GET received at route api/friends") 
          fs.readFile(friendDBpath, (err, data) => {
             if (err && (err.errno === -2) && (err.code === 'ENOENT')) {
                 res.write('No friends currently in database!!')
@@ -17,9 +16,7 @@ module.exports = (app) => {
     })
   
     app.post('/api/friends', (req, res) => {
-        console.log("POST received at route api/friends")
         const newFriend = req.body
-        console.log(newFriend)
         fs.readFile(friendDBpath, (err, data) => {
             // If no friend file exists, just create it and add this user's data
             if (err && (err.errno === -2) && (err.code === 'ENOENT')) {
